@@ -33,13 +33,7 @@
     "build:css": "run-s clean:css mkdir:css _build:css",
     "_build:css": "cpr css build/css",
     "watch:css": "run-s build:css _watch:css",
-    "_watch:css": "chokidar css/**/* -c \"npm run build:css\"",
-    "mkdir:assets": "run-s mkdir",
-    "clean:assets": "rimraf build/assets",
-    "build:assets": "run-s clean:assets mkdir:assets _build:assets",
-    "_build:assets": "cpr assets build/assets",
-    "watch:assets": "run-s build:assets _watch:assets",
-    "_watch:assets": "chokidar assets/**/* -c \"npm run build:assets\""
+    "_watch:css": "chokidar css/**/* -c \"npm run build:css\""
   },
   "keywords": [],
   "author": "",
