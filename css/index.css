@@ -18,6 +18,7 @@ body {
     text-align: center;
     width: 75%;
     text-shadow: 1px 1px #868686;
+    grid-area: 1;
 }
 
 #root {
@@ -35,12 +36,14 @@ body {
 .App {
     height: 100vh;
     display: grid;
-    grid-template-rows: .5fr 1fr;
+    grid-template-rows: 1.5fr 1fr;
 }
 
 .app-div {
     width: 60vw;
     margin: 5em auto;
+    grid-area: 2;
+    height: 364px;
 }
 
 .react-form-message-warning {
@@ -53,4 +56,8 @@ body {
 
 .zip-form>div {
     margin: .5em;
+}
+
+.results-wrapper{
+    margin: 10px;
 }

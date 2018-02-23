@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const app = express();
 var data = require('./zip');
 const jsonParser = bodyParser.json();
-// app.use(express.static(__dirname + './../../'));
 app.use(express.static('build'));
 app.use(jsonParser);
 
@@ -57,8 +56,9 @@ app.post('/api/zip', (req, res) => {
     object.zipOne = data.zips[zipOneIndex];
     object.zipTwo = data.zips[zipTwoIndex];
 
-    const distance = calcDistance(object.zipOne, object.zipTwo)
-    res.send(distance);
+    object.distance = calcDistance(object.zipOne, object.zipTwo);
+
+    res.send(object);
 })
 
 app.listen(port, () => {

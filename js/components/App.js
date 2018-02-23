@@ -10,31 +10,23 @@ class App extends Component {
         super();
         this.state = {
             error: '',
-            locationOne: '',
-            locationTwo: ''
+            locationOne: {
+                zip: '',
+                name: ''
+            },
+            locationTwo: {
+                zip: '',
+                name: ''
+            }
         }
-        this.hanleChange = this.hanleChange.bind(this);
+        // this.hanleChange = this.hanleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    hanleChange(event) {
-        if (event.target.className === 'form-control one') {
-            this.setState({
-                locationOne: event.target.value
-            })
-        } else {
-            this.setState({
-                locationTwo: event.target.value
-            })
-        }
     }
 
     handleSubmit(data) {
 
-        console.log(data)
-
         const locationOne = data.zipOne;
-        const locationTwo = data.zipTwo
+        const locationTwo = data.zipTwo;
 
         const zipcode = /\d{5}(?:[-\s]\d{4})?/g;
 
@@ -46,12 +38,18 @@ class App extends Component {
             },
             method: 'POST',
         })
-            .then(res => res.json())
-            .then(data => this.setState({
-                distance: `${data} Miles`,
-                locationOne,
-                locationTwo
-            }))
+        .then(res => res.json())
+        .then(data => this.setState({
+            distance: `${data.distance} Miles`,
+            locationOne: {
+                zip: locationOne,
+                name: `${data.zipOne.City}, ${data.zipOne.State}`
+            },
+            locationTwo: {
+                zip: locationTwo,
+                name: `${data.zipTwo.City}, ${data.zipTwo.State}`
+            }
+        }))
     }
 
     render() {
